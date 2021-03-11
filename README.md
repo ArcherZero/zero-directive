@@ -1,5 +1,11 @@
 # 从零开始的vue自定义指令
 
+## 简介
+
+自定义指令：v-Int、v-Price
+- v-Int: 只能输入非负整数
+- v-Price: 只能输入金额（默认保留两位小数, 小数点只能输一次）
+
 ## 安装
 
 ```js
@@ -22,6 +28,7 @@ import 'zero-directive'
 
 ```
 
-## 简介
-
-自定义指令：v-Int、v-Price
+```html
+<el-input v-Int placeholder="只能输入数字">
+<el-input v-Price placeholder="只能输入金额且保留两位小数">
+```

@@ -3,7 +3,7 @@ import Vue from 'vue'
  * @Author: 泽斯
  * @Date: 2020-12-20
  * @Last Modified by: 泽斯
- * @Last Modified time: 2020-12-20
+ * @Last Modified time: 2021-03-11
  */
 
 // el-input-number 无法实现默认值为空
@@ -40,9 +40,13 @@ function clearNoNum (obj) {
   value = value.replace(/^\./g, '') //  验证第一个字符是数字而不是字符
   value = value.replace(/\.{2,}/g, '.') //  只保留第一个.清除多余的
   value = value.replace('.', '$#$').replace(/\./g, '').replace('$#$', '.')
-  // 保留两位小数
+
   const temp = value.split('.')
+   // 保留两位小数
   if (temp[1] && temp[1].length > 2) temp[1] = temp[1].slice(0, 2)
+  // 清除数字首位多个0
+  if (temp[0]) temp[0] = Number(temp[0]).toString()
+
   value = temp.join('.')
   return value
 }
